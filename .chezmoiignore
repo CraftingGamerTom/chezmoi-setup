@@ -1,0 +1,4 @@
+# Files in the repo that should NOT be written to ~
+bootstrap.sh
+README.md
+.github
