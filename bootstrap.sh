@@ -2,7 +2,7 @@
 # Minimal bootstrap — just installs chezmoi, then chezmoi handles the rest.
 #
 # Run on a fresh machine:
-#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/CraftingGamerTom/chezmoi-setup/main/bootstrap.sh)"
+#   curl -fsSL https://raw.githubusercontent.com/CraftingGamerTom/chezmoi-setup/main/bootstrap.sh | bash
 #
 # Override the dotfiles repo (e.g. for a work config):
 #   CHEZMOI_REPO="git@github.com:CraftingGamerTom/chezmoi-work.git" ./bootstrap.sh
