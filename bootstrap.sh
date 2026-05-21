@@ -29,12 +29,25 @@ if ! command -v chezmoi &>/dev/null; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+CHEZMOI_SOURCE="${HOME}/.local/share/chezmoi"
+
+# Always start each phase with a clean source dir. chezmoi keeps only one
+# source repo at a time, and `chezmoi init --apply` on an existing source
+# does NOT git-pull — so re-runs would silently use stale code.
+wipe_source() {
+  if [[ -d "$CHEZMOI_SOURCE" ]]; then
+    rm -rf "$CHEZMOI_SOURCE"
+  fi
+}
+
 # ── 2. Run chezmoi-setup (installs Homebrew, 1Password, etc.) ────────────────
 log "Running chezmoi-setup..."
+wipe_source
 chezmoi init --apply "$SETUP_REPO"
 
 # ── 3. Apply personal/work dotfiles ─────────────────────────────────────────
 log "Applying dotfiles from $CHEZMOI_REPO..."
+wipe_source
 chezmoi init --apply "$CHEZMOI_REPO"
 
 log "Bootstrap complete! Open a new terminal to pick up all changes."
