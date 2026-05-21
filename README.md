@@ -15,7 +15,7 @@ against a dotfiles repository.
 ## Fresh machine — one-liner
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/CraftingGamerTom/chezmoi-setup/main/bootstrap.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/CraftingGamerTom/chezmoi-setup/main/bootstrap.sh)
 ```
 
 That's it. The script is idempotent — re-running is safe.
